@@ -1,0 +1,32 @@
+{
+  "name": "mityadv-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Личный шаблон автоматизации на Gulp",
+  "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "1.x",
+    "stylelint": "^11.1.1",
+    "stylelint-config-htmlacademy": "^0.1.4"
+  },
+  "scripts": {
+    "editorconfig": "editorconfig-cli",
+    "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "IE 11",
+    "Firefox ESR"
+  ],
+  "editorconfig-cli": [
+    "*.json",
+    "*.js",
+    "source/*.html",
+    "source/js/**/*.js",
+    "source/img/**/*.svg",
+    "source/sass/**/*.{sass,scss}"
+  ],
+  "engines": {
+    "node": "8.15"
+  },
+  "dependencies": {}
+}
