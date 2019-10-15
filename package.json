@@ -1,6 +1,6 @@
 {
   "name": "mityadv-project",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Личный шаблон автоматизации на Gulp",
   "devDependencies": {
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "editorconfig": "editorconfig-cli",
-    "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss"
+    "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss",
+    "test": "npm run editorconfig && npm run stylelint"
   },
   "browserslist": [
     "last 2 versions",
