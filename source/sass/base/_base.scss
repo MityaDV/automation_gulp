@@ -1,0 +1,17 @@
+// в этом файле подключаем импортами все файлы которые относятся к общим стилям примерно так:
+/*
+  @import "normalize";
+  @import "mixins";
+  @import "vars";
+  @import "fonts";
+  @import "layout";
+  @import "typography";
+*/
+//  Идея в том что в папке base, лежит файл _base.scss который собирает в себе все остальные файлы, которые тоже находятся в папке base, (т.е. на одном уровне с ним), и отвечают каждый по отдельности за свои стили, переменные, цвета, шрифты, примеси, типографику.
+
+@import "normalize";
+@import "mixins";
+@import "vars";
+@import "fonts";
+@import "layout";
+@import "typography";

@@ -1,0 +1,25 @@
+// в этом файле подключаем импортами все scss файлы для бэм блоков (каждый отдельно) примерно так:
+/*
+  @import "about";
+  @import "catalog";
+  @import "contacts";
+  @import "feedback";
+  @import "footer";
+  @import "header";
+  @import "offers";
+  @import "production";
+  @import "promo";
+  @import "social";
+  @import "logo";
+  @import "card";
+  @import "order";
+  @import "field";
+  @import "form";
+  @import "btn";
+  @import "cart";
+  @import "modal";
+  @import "overlay";
+*/
+// этот файл тоже является собирающим в себя все остальные находящиеся с ним на одном уровне файлы scss
+
+@import "page";
