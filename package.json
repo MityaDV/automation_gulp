@@ -5,13 +5,16 @@
   "description": "Личный шаблон автоматизации на Gulp",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.x",
+    "gulp": "^4.0.2",
     "stylelint": "^11.1.1",
     "stylelint-config-htmlacademy": "^0.1.4"
   },
   "scripts": {
     "editorconfig": "editorconfig-cli",
     "stylelint": "stylelint \"source/sass/**/*.scss\" --syntax scss",
-    "test": "npm run editorconfig && npm run stylelint"
+    "test": "npm run editorconfig && npm run stylelint",
+    "build": "gulp css",
+    "start": "gulp start"
   },
   "browserslist": [
     "last 2 versions",
