@@ -8,11 +8,13 @@
     "autoprefixer": "^9.6.5",
     "gulp": "^4.0.2",
     "gulp-csso": "^3.0.1",
+    "gulp-imagemin": "^6.1.1",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-webp": "^4.0.1",
     "stylelint": "^11.1.1",
     "stylelint-config-htmlacademy": "^0.1.4"
   },
