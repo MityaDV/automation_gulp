@@ -1,0 +1,11 @@
+@mixin fixed_inner() {
+  width: 1600px;
+  margin: 0 auto;
+  padding: $padding_page;
+}
+
+@mixin list() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
