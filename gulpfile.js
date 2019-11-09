@@ -18,14 +18,6 @@ var include = require("posthtml-include");
 var del = require("del");
 var uglify = require("gulp-uglify");
 
-gulp.task("html", function () {
-  return gulp.src("source/*.html")
-    .pipe(posthtml([
-      include()
-    ]))
-    .pipe(gulp.dest("build"));
-});
-
 gulp.task("css", function () {
   return gulp.src("source/sass/style.scss")
     .pipe(plumber())
@@ -41,16 +33,24 @@ gulp.task("css", function () {
     .pipe(server.stream());
 });
 
-gulp.task("js", function () {
-  return gulp.src("source/js/*.js")
-    .pipe(sourcemap.init())
-    .pipe(uglify())
-    .pipe(rename(function (path) {
-      path.basename += ".min";
-    }))
-    .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/js"))
-    .pipe(server.stream());
+gulp.task("server", function () {
+  server.init({
+    server: "build/",
+    notify: false,
+    open: true,
+    cors: true,
+    ui: false
+  });
+
+  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
+  gulp.watch("source/img/sprite-svg-icons/icon-*.svg", gulp.series("sprite", "html", "refresh"));
+  gulp.watch("source/*.html", gulp.series("html", "refresh"));
+  gulp.watch("source/js/*.js", gulp.series("js", "refresh"));
+});
+
+gulp.task("refresh", function (done) {
+  server.reload();
+  done();
 });
 
 gulp.task("images", function () {
@@ -77,6 +77,9 @@ gulp.task("webp", function () {
 
 gulp.task("sprite", function () {
   return gulp.src("source/img/sprite-svg-icons/icon-*.svg")
+    .pipe(imagemin([
+      imagemin.svgo()
+    ]))
     .pipe(svgstore({
       inlineSvg: true
     }))
@@ -92,24 +95,24 @@ gulp.task("sprite", function () {
     .pipe(gulp.dest("build/img"));
 });
 
-gulp.task("server", function () {
-  server.init({
-    server: "build/",
-    notify: false,
-    open: true,
-    cors: true,
-    ui: false
-  });
-
-  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
-  gulp.watch("source/img/icon-*.svg", gulp.series("sprite", "html", "refresh"));
-  gulp.watch("source/*.html", gulp.series("html", "refresh"));
-  gulp.watch("source/js/*.js", gulp.series("js", "refresh"));
+gulp.task("html", function () {
+  return gulp.src("source/*.html")
+    .pipe(posthtml([
+      include()
+    ]))
+    .pipe(gulp.dest("build"));
 });
 
-gulp.task("refresh", function (done) {
-  server.reload();
-  done();
+gulp.task("js", function () {
+  return gulp.src("source/js/*.js")
+    .pipe(sourcemap.init())
+    .pipe(uglify())
+    .pipe(rename(function (path) {
+      path.basename += ".min";
+    }))
+    .pipe(sourcemap.write("."))
+    .pipe(gulp.dest("build/js"))
+    .pipe(server.stream());
 });
 
 gulp.task("copy", function () {
