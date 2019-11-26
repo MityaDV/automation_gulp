@@ -1,11 +1,57 @@
+// от mobile до tablet ширины
+@mixin inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: $padding_mobile;
+}
+
+// от tablet до desktop ширины
 @mixin fixed_inner() {
+  width: 768px;
+  margin: 0 auto;
+  padding: $padding_tablet;
+}
+
+@mixin fixed_inner_desktop() {
+  width: 1280px;
+  margin: 0 auto;
+  padding: $padding_desktop;
+}
+
+@mixin fixed_inner_desktop_l() {
   width: 1600px;
   margin: 0 auto;
-  padding: $padding_page;
+  padding: $padding_desktop;
 }
 
 @mixin list() {
   margin: 0;
   padding: 0;
+
   list-style: none;
+}
+
+@mixin heading_h1 {
+  font-size: $font_size_h1_desktop;
+  line-height: $line_height_h1_desktop;
+}
+
+@mixin heading_h2 {
+  font-size: $font_size_h2_desktop;
+  line-height: $line_height_h2_desktop;
+}
+
+@mixin heading_h3 {
+  font-size: $font_size_h3_desktop;
+  line-height: $line_height_h3_desktop;
+}
+
+@mixin heading_h4 {
+  font-size: $font_size_h4_desktop;
+  line-height: $line_height_h4_desktop;
+}
+
+@mixin indent_p {
+  font-size: $font_size_p_desktop;
+  line-height: $line_height_p_desktop;
 }

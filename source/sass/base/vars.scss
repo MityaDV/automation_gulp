@@ -1,10 +1,37 @@
+// все цвета
+
 $color_white: #ffffff;
 
+// все свойства шрифтов
+
 $font_family_base: "Open Sans";
-
 $font_size_base: 10px;
-
 $font_weight_normal: 400;
 $font_weight_bold: 700;
 
-$padding_page: 0 80px;
+// во всех ниже перечисленных наборах выделять среднее значения f-s и l-h и прописывать их в файле mixins как базовые для всех шрифтов на всех страницах, это позволяет ускорить подгонку размеров заголовков и текста максимально приближёнными к макету, в начале стилизации просто инклюдим соответствующие mixin на соответствующий элемент (h1...h6, p)
+// mobile font-size (h1...h6, p)
+// tablet font-size (h1...h6, p)
+// desktop font-size (h1...h6, p)
+
+// mobile line-height (h1...h6, p)
+// tablet line-height (h1...h6, p)
+// desktop line-height (h1...h6, p)
+
+// внешнии отступы
+
+$padding_desktop: 0 70px;
+$padding_tablet: 0 50px;
+$padding_mobile: 0 30px;
+
+// Значения вьюпортов
+
+$width_desktop: 1600px;
+$width_desktop: 1280px;
+$width_tablet: 768px;
+$width_mobile_only: 767px;
+
+// Ретинизация
+
+$retina_dpi: 144dpi;
+$retina_dppx: 1.5dppx;
