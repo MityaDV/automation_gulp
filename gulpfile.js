@@ -63,7 +63,11 @@ gulp.task("images", function () {
       imagemin.jpegtran({
         progressive: true
       }),
-      imagemin.svgo()
+      imagemin.svgo({
+        plugins: [{
+          removeViewBox: false
+        }]
+      })
     ]))
     .pipe(gulp.dest("build/img"));
 });
@@ -79,7 +83,11 @@ gulp.task("webp", function () {
 gulp.task("sprite", function () {
   return gulp.src("source/img/sprite-svg-icons/icon-*.svg")
     .pipe(imagemin([
-      imagemin.svgo()
+      imagemin.svgo({
+        plugins: [{
+          removeViewBox: false
+        }]
+      })
     ]))
     .pipe(svgstore({
       inlineSvg: true
@@ -107,7 +115,11 @@ gulp.task("html", function () {
 gulp.task("icon-sprite", function () {
   return gulp.src("source/img/sprite-svg-icons/icon-*.svg")
     .pipe(imagemin([
-      imagemin.svgo()
+      imagemin.svgo({
+        plugins: [{
+          removeViewBox: false
+        }]
+      })
     ]))
     .pipe(gulp.dest("build/img/sprite-svg-icons"));
 });
