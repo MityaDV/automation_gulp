@@ -20,13 +20,14 @@ $font_weight_bold: 700;
 
 // внешнии отступы
 
+$padding_wide: 0 70px;
 $padding_desktop: 0 70px;
 $padding_tablet: 0 50px;
 $padding_mobile: 0 30px;
 
 // Значения вьюпортов
 
-$width_desktop: 1600px;
+$width_desktop_wide: 1600px;
 $width_desktop: 1280px;
 $width_tablet: 768px;
 $width_mobile_only: 767px;

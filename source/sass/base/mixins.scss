@@ -1,27 +1,26 @@
-// от mobile до tablet ширины
 @mixin inner {
+  box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
-  padding: $padding_mobile;
+  padding: 0 $padding_mobile;
 }
 
-// от tablet до desktop ширины
 @mixin fixed_inner() {
-  width: 768px;
-  margin: 0 auto;
-  padding: $padding_tablet;
-}
+  @include inner();
 
-@mixin fixed_inner_desktop() {
-  width: 1280px;
-  margin: 0 auto;
-  padding: $padding_desktop;
-}
+  @media (min-width: $width_tablet) {
+    padding: 0 $padding_tablet;
+  }
 
-@mixin fixed_inner_desktop_l() {
-  width: 1600px;
-  margin: 0 auto;
-  padding: $padding_desktop;
+  @media (min-width: $width_desktop) {
+    width: $width_desktop;
+    padding: 0 $padding_desktop;
+  }
+
+  @media (min-width: $width_desktop_wide) {
+    width: $width_desktop_wide;
+    padding: 0 $padding_wide;
+  }
 }
 
 @mixin list() {
