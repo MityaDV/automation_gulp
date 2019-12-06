@@ -2,24 +2,24 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
-  padding: 0 $padding_mobile;
+  padding: $padding_mobile;
 }
 
 @mixin fixed_inner() {
   @include inner();
 
   @media (min-width: $width_tablet) {
-    padding: 0 $padding_tablet;
+    padding: $padding_tablet;
   }
 
   @media (min-width: $width_desktop) {
     width: $width_desktop;
-    padding: 0 $padding_desktop;
+    padding: $padding_desktop;
   }
 
   @media (min-width: $width_desktop_wide) {
     width: $width_desktop_wide;
-    padding: 0 $padding_wide;
+    padding: $padding_wide;
   }
 }
 
