@@ -1,13 +1,12 @@
 @mixin inner {
-  box-sizing: border-box;
+  @include screen_steps;
+
   width: 100%;
   margin: 0 auto;
   padding: $padding_mobile;
 }
 
-@mixin fixed_inner() {
-  @include inner();
-
+@mixin screen_steps() {
   @media (min-width: $width_tablet) {
     padding: $padding_tablet;
   }
@@ -18,7 +17,6 @@
   }
 
   @media (min-width: $width_desktop_wide) {
-    width: $width_desktop_wide;
     padding: $padding_wide;
   }
 }
