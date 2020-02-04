@@ -1,3 +1,5 @@
+// универсальный mixin для центровщика при mobile_first
+
 @mixin inner {
   @include screen_steps;
 
@@ -7,16 +9,17 @@
 }
 
 @mixin screen_steps() {
-  @media (min-width: $width_tablet) {
+  @media (min-width: $width_viewport_tablet) {
     padding: $padding_tablet;
   }
 
-  @media (min-width: $width_desktop) {
+  @media (min-width: $width_viewport_desktop) {
     width: $width_desktop;
     padding: $padding_desktop;
   }
 
-  @media (min-width: $width_desktop_wide) {
+  @media (min-width: $width_viewport_desktop_wide) {
+    width: $width_desktop_wide;
     padding: $padding_wide;
   }
 }

@@ -18,16 +18,17 @@ $font_weight_bold: 700;
 // tablet line-height (h1...h6, p)
 // desktop line-height (h1...h6, p)
 
-// отступы
+// padding
 
 $padding_wide: 0 70px;
-$padding_desktop: 0 70px;
+$padding_desktop: 0 60px;
 $padding_tablet: 0 50px;
 $padding_mobile: 0 30px;
 
-// ширины контента
+// ширины контента + padding
 
-$width_desktop: 1160px;
+$width_desktop_wide: 1600px; // 1600 - (70 * 2) = 1460px ширина контентной части
+$width_desktop: 1280px; // 1280 - (60 * 2) = 1160px ширина контентной части
 $width_tablet: 100%;
 $width_mobile: 100%;
 

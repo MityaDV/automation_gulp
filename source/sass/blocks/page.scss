@@ -3,3 +3,7 @@
 
 @import "../base/mixins.scss";
 @import "../base/vars.scss";
+
+.inner__page {
+  @include inner;
+}
