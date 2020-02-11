@@ -1,9 +1,9 @@
 "use strict";
 
 var gulp = require("gulp");
-var sass = require("gulp-sass");
 var plumber = require("gulp-plumber");
 var sourcemap = require("gulp-sourcemaps");
+var sass = require("gulp-sass");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var server = require("browser-sync").create();
@@ -16,16 +16,18 @@ var cheerio = require("gulp-cheerio");
 var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
+var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
+var terser = require("gulp-terser");
 
 gulp.task("css", function () {
   return gulp.src("source/sass/style.scss")
     .pipe(plumber())
     .pipe(sourcemap.init())
     .pipe(sass())
-    .pipe(postcss([
-      autoprefixer()
-    ]))
+    .pipe(postcss([autoprefixer({
+      browsers: ["last 2 versions"]
+    })]))
     .pipe(csso())
     .pipe(rename("style.min.css"))
     .pipe(sourcemap.write("."))
@@ -42,7 +44,7 @@ gulp.task("server", function () {
     ui: false
   });
 
-  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
+  gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css", "refresh"));
   gulp.watch("source/img/*.{png,jpg,svg}", gulp.series("images", "webp", "refresh"));
   gulp.watch("source/img/sprite-svg-icons/icon-*.svg", gulp.series("sprite", "html", "icon-sprite", "refresh"));
   gulp.watch("source/*.html", gulp.series("html", "refresh"));
@@ -52,6 +54,21 @@ gulp.task("server", function () {
 gulp.task("refresh", function (done) {
   server.reload();
   done();
+});
+
+gulp.task("js", function () {
+  return gulp.src("source/js/*.js")
+    // .pipe(terser())
+    .pipe(plumber())
+    .pipe(concat("main.js"))
+    .pipe(sourcemap.init())
+    // .pipe(uglify())
+    // .pipe(rename(function (path) {
+    //   path.basename += ".min";
+    // }))
+    .pipe(sourcemap.write("."))
+    .pipe(gulp.dest("build/js"))
+    .pipe(server.stream());
 });
 
 gulp.task("images", function () {
@@ -124,20 +141,13 @@ gulp.task("icon-sprite", function () {
     .pipe(gulp.dest("build/img/sprite-svg-icons"));
 });
 
-gulp.task("js", function () {
-  return gulp.src("source/js/*.js")
-    .pipe(sourcemap.init())
-    .pipe(uglify())
-    .pipe(rename(function (path) {
-      path.basename += ".min";
-    }))
-    .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/js"))
-    .pipe(server.stream());
-});
-
 gulp.task("copy", function () {
-  return gulp.src("source/fonts/**/*.{woff,woff2}", {
+  return gulp.src(["source/fonts/**/*.{woff,woff2}",
+      "source/img/**",
+      // "source/js/**",
+      "source//*.ico",
+      "source/js/async-polyfills/*.js"
+    ], {
       base: "source"
     })
     .pipe(gulp.dest("build"));

@@ -1,0 +1,18 @@
+.ui {
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-left: 0;
+
+  list-style: none;
+}
+
+.ui__item {
+  position: relative;
+
+  margin: 20px auto;
+  padding: 20px;
+
+  border: 1px solid $dark;
+}
