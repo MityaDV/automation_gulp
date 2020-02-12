@@ -19,19 +19,7 @@
     <li class="ui__item">
       <button class="button button--icon" type="button">я кнопка или ссылка и могу быть с иконкой</button>
     </li>
-    <li class="ui__item">
-
-    </li>
-    <li class="ui__item">
-
-    </li>
-    <li class="ui__item">
-
-    </li>
-    <li class="ui__item">
-
-    </li>
-    <li class="ui__item" onclick="myFunction()">
+    <li class="ui__item" tabindex="0" style="cursor: pointer;" onclick="myFunction()">
       <b>Я покажу модальное окно "Нажми на меня"</b>
       <div class="popup" id="demo">
         <h2>Я модалка</h2>
@@ -40,6 +28,7 @@
         function myFunction() {
           document.getElementById("demo").classList.add('popup-open');
         }
+
       </script>
     </li>
   </ul>

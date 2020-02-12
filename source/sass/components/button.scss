@@ -25,29 +25,6 @@
   padding-right: 65px;
 }
 
-.button--small {
-  padding-top: 17px;
-  padding-bottom: 17px;
-}
-
-.button--choose {
-  padding: 10px;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  text-transform: none;
-  letter-spacing: -0.415px;
-
-  border-radius: 6px;
-}
-
-.button--not-selected {
-  color: $color_gray;
-
-  background-color: $color_button_not_selected;
-}
-
 .button--icon::before {
   content: "";
   position: absolute;

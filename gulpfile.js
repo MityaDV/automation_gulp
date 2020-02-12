@@ -45,8 +45,8 @@ gulp.task("server", function () {
   });
 
   gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css", "refresh"));
+  gulp.watch("source/img/sprite-svg-icons/icon-*.svg", gulp.series("sprite", "html", "refresh"));
   gulp.watch("source/img/*.{png,jpg,svg}", gulp.series("images", "webp", "refresh"));
-  gulp.watch("source/img/sprite-svg-icons/icon-*.svg", gulp.series("sprite", "html", "icon-sprite", "refresh"));
   gulp.watch("source/*.html", gulp.series("html", "refresh"));
   gulp.watch("source/js/*.js", gulp.series("js", "refresh"));
 });
@@ -58,15 +58,15 @@ gulp.task("refresh", function (done) {
 
 gulp.task("js", function () {
   return gulp.src("source/js/*.js")
-    // .pipe(terser())
+    // .pipe(terser()) // преобразует весь скрипт файл в одну строку
     .pipe(plumber())
     .pipe(concat("main.js"))
-    .pipe(sourcemap.init())
-    // .pipe(uglify())
+    // .pipe(sourcemap.init()) // расскомитить когда минифицирую js, что бы видеть функции в dev_tools в полном виде
+    // .pipe(uglify()) // расскомитить если нужно минифицировать js
     // .pipe(rename(function (path) {
     //   path.basename += ".min";
     // }))
-    .pipe(sourcemap.write("."))
+    // .pipe(sourcemap.write(".")) // расскомитить когда минифицирую js, что бы выдеть функции в dev_tools в полном виде
     .pipe(gulp.dest("build/js"))
     .pipe(server.stream());
 });
@@ -129,23 +129,11 @@ gulp.task("html", function () {
     .pipe(gulp.dest("build"));
 });
 
-gulp.task("icon-sprite", function () {
-  return gulp.src("source/img/sprite-svg-icons/icon-*.svg")
-    .pipe(imagemin([
-      imagemin.svgo({
-        plugins: [{
-          removeViewBox: false
-        }]
-      })
-    ]))
-    .pipe(gulp.dest("build/img/sprite-svg-icons"));
-});
-
 gulp.task("copy", function () {
   return gulp.src(["source/fonts/**/*.{woff,woff2}",
       "source/img/**",
-      // "source/js/**",
-      "source//*.ico",
+      // "source/js/**", // расскоментировать если нужны только js файлы
+      // "source/*.ico",
       "source/js/async-polyfills/*.js"
     ], {
       base: "source"
@@ -157,5 +145,5 @@ gulp.task("clean", function () {
   return del("build");
 });
 
-gulp.task("build", gulp.series("clean", "sprite", "html", "css", "js", "images", "webp", "copy"));
+gulp.task("build", gulp.series("clean", "copy", "webp", "images", "js", "css","sprite", "html"));
 gulp.task("start", gulp.series("build", "server"));

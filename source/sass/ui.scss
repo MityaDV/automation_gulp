@@ -1,4 +1,6 @@
 .ui {
+  @include list;
+
   display: flex;
   flex-direction: column;
   max-width: 1024px;
@@ -14,5 +16,5 @@
   margin: 20px auto;
   padding: 20px;
 
-  border: 1px solid $dark;
+  border: 1px solid $color_dark;
 }
