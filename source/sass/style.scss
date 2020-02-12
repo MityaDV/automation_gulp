@@ -1,6 +1,16 @@
 // т.к. я разбил структуру сборки на подпапки в которых в свою очередь все файлы собирались в один обобщающий, такие как _base.scss и _blocks.scss, теперь в этот основной препроцессорный файл стилей, очень просто подключить всу структуру, подключив всего два файла
 
 // и при описании taska в gulpfile.js, в пути для преобразования scss файлов в css, нужно будет указать путь всего к одному файлу: source/sass/style.scss
+@charset "utf-8";
 
-@import "base/_base";
-@import "blocks/_blocks";
+// base
+@import "./base/_base";
+
+// blocks
+@import "./blocks/_blocks";
+
+// components
+@import "./components/_components";
+
+// ui-kit перед сдачей удалить
+@import "./ui.scss";

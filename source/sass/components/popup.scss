@@ -1,0 +1,75 @@
+/*стили для модальных окон*/
+
+@keyframes departure {
+  0% {
+    transform: translateX(-200%) translateY(-50%);
+  }
+
+  70% {
+    transform: translateX(-30%) translateY(-50%);
+  }
+
+  90% {
+    transform: translateX(-70%) translateY(-50%);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+@keyframes turn {
+  0%,
+  100% {
+    transform: rotate(0deg) translateX(-50%) translateY(-50%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-50%) translateY(-50%) rotate(-2deg);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(-50%) translateY(-50%) rotate(2deg);
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+
+  display: none;
+  width: 500px;
+  height: 500px;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 20px rgba(4, 6, 6, 0.2);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.popup-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: ease-out;
+  animation-name: departure;
+  animation-duration: 0.7s;
+
+  will-change: transform;
+}
+
+.popup-error {
+  animation-name: turn;
+  animation-duration: 0.9s;
+
+  will-change: transform;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Атоматизация - Gulp автор Дмитрий Ковальков">
+  <title>Автоматизация Gulp</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+  <ul class="ui">
+    <li class="ui__item">
+      <button class="button" type="button">я кнопка или ссылка</button>
+    </li>
+    <li class="ui__item">
+      <button class="button button--icon" type="button">я кнопка или ссылка и могу быть с иконкой</button>
+    </li>
+    <li class="ui__item" tabindex="0" style="cursor: pointer;" onclick="myFunction()">
+      <b>Я покажу модальное окно "Нажми на меня"</b>
+      <div class="popup" id="demo">
+        <h2>Я модалка</h2>
+      </div>
+      <script>
+        function myFunction() {
+          document.getElementById("demo").classList.add('popup-open');
+        }
+
+      </script>
+    </li>
+  </ul>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
