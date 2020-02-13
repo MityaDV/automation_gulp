@@ -17,6 +17,7 @@ var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var concat = require("gulp-concat");
+var babel = require('gulp-babel');
 var uglify = require("gulp-uglify");
 var terser = require("gulp-terser");
 
@@ -60,6 +61,7 @@ gulp.task("js", function () {
   return gulp.src("source/js/*.js")
     // .pipe(terser()) // преобразует весь скрипт файл в одну строку
     .pipe(plumber())
+    .pipe(babel())
     .pipe(concat("main.js"))
     // .pipe(sourcemap.init()) // расскомитить когда минифицирую js, что бы видеть функции в dev_tools в полном виде
     // .pipe(uglify()) // расскомитить если нужно минифицировать js
