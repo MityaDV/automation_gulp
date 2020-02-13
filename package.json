@@ -2,17 +2,20 @@
   "name": "mityadv-project",
   "version": "0.0.1",
   "private": true,
-  "description": "Личный шаблон автоматизации на Gulp",
+  "description": "Автоматизация на Gulp",
   "devDependencies": {
+    "@babel/preset-env": "^7.8.4",
     "@htmlacademy/editorconfig-cli": "1.x",
     "autoprefixer": "9.5.x",
+    "babel-preset-latest": "^6.24.1",
     "browser-sync": "2.26.x",
+    "del": "^5.1.0",
     "eslint": "4.18.2",
     "eslint-config-htmlacademy": "0.4.x",
-    "del": "^5.1.0",
     "gulp": "4.0.x",
-    "gulp-concat": "^2.6.1",
+    "gulp-babel": "^8.0.0",
     "gulp-cheerio": "^1.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-plumber": "1.2.x",
@@ -54,6 +57,11 @@
   ],
   "engines": {
     "node": "8.15"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
   },
   "dependencies": {
     "bem-validate": "^1.1.2"
