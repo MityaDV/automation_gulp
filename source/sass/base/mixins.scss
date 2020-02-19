@@ -33,9 +33,20 @@
   list-style: none;
 }
 
+// для desctop first
 @mixin heading_h1 {
   font-size: $font_size_h1_desktop;
   line-height: $line_height_h1_desktop;
+
+  @media (max-width: $width_tablet) {
+    font-size: $font_size_h1_tablet;
+    line-height: $line_height_h1_tablet;
+  }
+
+  @media (max-width: $width_mobile) {
+    font-size: $font_size_h1_mobile;
+    line-height: $line_height_h1_mobile;
+  }
 }
 
 @mixin heading_h2 {
