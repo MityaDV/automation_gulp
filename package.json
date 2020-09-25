@@ -8,7 +8,7 @@
     "@htmlacademy/editorconfig-cli": "1.x",
     "autoprefixer": "9.5.x",
     "babel-preset-latest": "^6.24.1",
-    "browser-sync": "2.26.x",
+    "browser-sync": "^2.26.12",
     "del": "^5.1.0",
     "eslint": "4.18.2",
     "eslint-config-htmlacademy": "0.4.x",
